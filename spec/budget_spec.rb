@@ -6,8 +6,9 @@ RSpec.describe Budget do
   let(:customer_service) {Department.new("Customer Service")}
   let(:sales) {Department.new("Sales")}
   let(:fire) {Department.new("Fire")}
-  let(:bobbi) {Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"})}
-  let(:aaron) {Employee.new({name: "Aaron Tanaka", age: "25", salary: "90000"})}
+  let(:bobbi) {Employee.new({name: "Bobbi Jaeger", age: "30", salary: 100000})}
+  let(:aaron) {Employee.new({name: "Aaron Tanaka", age: "25", salary: 90000})}
+  let(:billy) {Employee.new({name: "Billy Bob", age: "30", salary: 100000})}
   let(:budget1) {Budget.new("2023")}
 
   describe '#initialize' do
@@ -38,7 +39,7 @@ RSpec.describe Budget do
     end
   end
 
-  describe '#list_departments' do
+  describe '#list_low_expense' do
     it 'lists departments that a budget has' do
       budget1.add_department(customer_service)
       budget1.add_department(sales)
@@ -48,6 +49,19 @@ RSpec.describe Budget do
       sales.expense(400)
       fire.expense(201)
       expect(budget1.list_low_expense).to eq([sales, fire])
+    end
+  end
+
+  describe '#salaries_by_employee' do
+    it 'creates a hash with employee names as keys and salary as values' do
+      budget1.add_department(customer_service)
+      budget1.add_department(sales)
+      customer_service.hire(bobbi)
+      customer_service.hire(aaron)
+      sales.hire(billy)
+      expected = { "Bobbi Jaeger" => 100000, "Aaron Tanaka" => 90000, "Billy Bob" => 100000
+      }
+      expect(budget1.salaries_by_employee).to eq(expected)
     end
   end
 end
