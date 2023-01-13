@@ -63,7 +63,7 @@ RSpec.describe Budget do
       customer_service.hire(bobbi)
       customer_service.hire(aaron)
       sales.hire(billy)
-      expected = { "Bobbi Jaeger" => 100000, "Aaron Tanaka" => 90000, "Billy Bob" => 100000
+      expected = { "Bobbi Jaeger" => "$100000", "Aaron Tanaka" => "$90000", "Billy Bob" => "$100000"
       }
 
       expect(budget1.salaries_by_employee).to eq(expected)

@@ -28,7 +28,7 @@ class Budget
 		salary_hash = {}
 		@departments.each do |department|
 			department.employees.each do |employee|
-				salary_hash[employee.name] = employee.salary			
+				salary_hash[employee.name] = employee.salary.to_s.prepend("$")			
 			end
 		end
 		salary_hash
