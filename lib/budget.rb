@@ -10,12 +10,6 @@ class Budget
     @departments << department
   end
 
-  def list_departments
-    @departments.map do |department|
-      department
-    end
-  end
-
   def list_low_expense
     @departments.map do |department|
       if department.expenses < 500

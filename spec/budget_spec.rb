@@ -23,21 +23,12 @@ RSpec.describe Budget do
   end
 
   describe "#add_department" do
-    it 'adds a department to its departments array' do
-      budget1.add_department(customer_service)
-      budget1.add_department(sales)
-
-      expect(budget1.departments).to match([customer_service, sales])
-    end
-  end
-
-  describe '#list_departments' do
-    it 'lists departments that a budget has' do
+    it 'adds and lists departments' do
       budget1.add_department(customer_service)
       budget1.add_department(sales)
       budget1.add_department(fire)
 
-      expect(budget1.list_departments).to match([customer_service, sales, fire])
+      expect(budget1.departments).to match([customer_service, sales, fire])
     end
   end
 
