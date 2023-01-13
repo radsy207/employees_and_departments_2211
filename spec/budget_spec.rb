@@ -37,4 +37,17 @@ RSpec.describe Budget do
       expect(budget1.list_departments).to match([customer_service, sales, fire])
     end
   end
+
+  describe '#list_departments' do
+    it 'lists departments that a budget has' do
+      budget1.add_department(customer_service)
+      budget1.add_department(sales)
+      budget1.add_department(fire)
+      customer_service.expense(600)
+      expect(customer_service.expenses).to eq(600)
+      sales.expense(400)
+      fire.expense(201)
+      expect(budget1.list_low_expense).to eq([sales, fire])
+    end
+  end
 end
