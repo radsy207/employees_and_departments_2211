@@ -1,13 +1,10 @@
 require './lib/employee'
 
 RSpec.describe Employee do
-  let(:bobbi) {Employee.new({name: "Bobbi Jaeger", age: "30", salary: 100000})}
-
-
+  let(:bobbi) {Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"})}
 
   describe '#initialize' do
     it 'exists' do
-      
       expect(bobbi).to be_a(Employee)
     end
 
@@ -21,8 +18,8 @@ RSpec.describe Employee do
   describe '#give_raise' do 
     it 'raises salary' do
       bobbi.give_raise(5000)
+
       expect(bobbi.salary).to eq(105000)
     end
-
   end
 end

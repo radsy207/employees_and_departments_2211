@@ -12,7 +12,6 @@ class Budget
 
   def list_departments
     @departments.map do |department|
-      # require 'pry'; binding.pry
       department
     end
   end
@@ -24,7 +23,6 @@ class Budget
       end
     end.compact
   end
-
 
   def salaries_by_employee
 		salary_hash = {}
